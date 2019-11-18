@@ -1,11 +1,13 @@
-# Go Release Binary GitHub Action
+# Totoval Release Binary GitHub Action
 
-Automate publishing Go build artifacts for GitHub releases through GitHub Actions
+Automate publishing Totoval build artifacts for GitHub releases through GitHub Actions
 
 ```yaml
 # .github/workflows/release.yaml
 
-on: release
+on: 
+  release:
+    types: [published]
 name: Build
 jobs:
   release-linux-386:
@@ -14,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: compile and release
-      uses: ngs/go-release.action@v1.0.1
+      uses: totoval/go-release.action@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: "386"
@@ -25,7 +27,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: compile and release
-      uses: ngs/go-release.action@v1.0.1
+      uses: totoval/go-release.action@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: amd64
@@ -36,7 +38,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: compile and release
-      uses: ngs/go-release.action@v1.0.1
+      uses: totoval/go-release.action@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: "386"
@@ -47,7 +49,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: compile and release
-      uses: ngs/go-release.action@v1.0.1
+      uses: totoval/go-release.action@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: amd64
@@ -58,7 +60,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: compile and release
-      uses: ngs/go-release.action@v1.0.1
+      uses: totoval/go-release.action@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: "386"
@@ -69,9 +71,12 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: compile and release
-      uses: ngs/go-release.action@v1.0.1
+      uses: totoval/go-release.action@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: amd64
         GOOS: windows
 ```
+
+## Thanks
+* `ngs/go-release.action`
