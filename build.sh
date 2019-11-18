@@ -10,5 +10,13 @@ rmdir $PROJECT_ROOT
 ln -s $GITHUB_WORKSPACE $PROJECT_ROOT
 cd $PROJECT_ROOT
 go mod download
-go build -o ./builds/server ./main.go
-go build -o ./builds/artisan ./artisan.go
+
+EXT=''
+
+if [ $GOOS == 'windows' ]; then
+  EXT='.exe'
+fi
+
+
+go build -o ./builds/server${EXT} ./main.go
+go build -o ./builds/artisan${EXT} ./artisan.go
